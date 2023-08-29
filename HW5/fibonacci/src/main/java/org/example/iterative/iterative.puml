@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:input number;
+if (Check if number <= 1) then (yes)
+  :return number;
+  :Loop i = 2 to number;
+  :Calculate fib as fib1 + fib2;
+  :Update fib1 and fib2;
+  :return final fib;
+else (no)
+endif
+
+stop
+
+@enduml
