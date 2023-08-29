@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:Input number;
+if (number <= 1) then (true)
+  :return number;
+  :Call recursive Fibonacci for(number - 1);
+  :Call recursive Fibonacci for(number - 2);
+  :Sum results of recursive Fibonacci;
+  :return result;
+else (false)
+endif
+
+stop
+
+@enduml
