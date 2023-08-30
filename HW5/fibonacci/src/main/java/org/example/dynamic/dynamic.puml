@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:input number;
+if (Check if number <= 0) then (yes)
+  :return 0;
+  :Create fib array;
+  :set fib[0] to 0;
+  :set fib[1] to 1;
+  :for i = 2 to number;
+  :calculate fib as fib[i - 1] + fib[i - 2];
+  :store fib value;
+  :return fib number;
+else (false)
+endif
+
+stop
+
+@enduml
