@@ -14,10 +14,9 @@ public class App {
 
     private static final Logger logger = Logger.getLogger(App.class);
 
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
         logger.info("The program is started");
-        try (OsbbCrud crud = new OsbbCrud().init()){
+        try (OsbbCrud crud = new OsbbCrud().init()) {
             for (Member member : crud.getMembersWithAutoNotAllowed()) {
                 final StringBuffer sb = new StringBuffer();
                 sb.append(member.getId())
