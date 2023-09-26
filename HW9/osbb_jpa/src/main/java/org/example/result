@@ -1,0 +1,90 @@
+Hibernate:
+    select
+        member2_.names as col_0_0_,
+        tenant0_.auto_allow as col_1_0_,
+        memberrole4_.role as col_2_0_,
+        flat5_.number as col_3_0_,
+        flat6_.level as col_4_0_,
+        flat7_.square as col_5_0_,
+        building9_.adress as col_6_0_
+    from
+        tenants tenant0_
+    inner join
+        members member1_
+            on tenant0_.member_id=member1_.id
+    inner join
+        members member2_
+            on tenant0_.member_id=member2_.id
+    inner join
+        members member3_
+            on tenant0_.member_id=member3_.id
+    inner join
+        members_role memberrole4_
+            on member3_.id=memberrole4_.member_id
+    inner join
+        flats flat5_
+            on tenant0_.flat_id=flat5_.id
+    inner join
+        flats flat6_
+            on tenant0_.flat_id=flat6_.id
+    inner join
+        flats flat7_
+            on tenant0_.flat_id=flat7_.id
+    inner join
+        flats flat8_
+            on tenant0_.flat_id=flat8_.id cross
+    join
+        buildings building9_
+    where
+        flat8_.building_id=building9_.id
+        and tenant0_.auto_allow<>1
+        and (
+            select
+                count(flat11_.id)
+            from
+                tenants tenant10_
+            inner join
+                flats flat11_
+                    on tenant10_.flat_id=flat11_.id
+            where
+                tenant10_.id=member1_.id
+        )<2
+Name: Іванова Ганна
+Auto Allow: 0
+Role: staff
+Flat Number: 308
+Flat Level: 3
+Flat Square: 36.46
+Building Address: Sajevicha, 5
+
+Name: Копский Микола
+Auto Allow: 0
+Role: member
+Flat Number: 102
+Flat Level: 1
+Flat Square: 46.8
+Building Address: Sajevicha, 5
+
+Name: Гасій Микита
+Auto Allow: 0
+Role: staff
+Flat Number: 309
+Flat Level: 3
+Flat Square: 33.54
+Building Address: Sajevicha, 6
+
+Name: Вілі Вонка
+Auto Allow: 0
+Role: member
+Flat Number: 206
+Flat Level: 2
+Flat Square: 25.6
+Building Address: Sajevicha, 7
+
+Name: Бурдик Ганна
+Auto Allow: 0
+Role: member
+Flat Number: 104
+Flat Level: 1
+Flat Square: 25.6
+Building Address: Sajevicha, 7
