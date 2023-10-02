@@ -1,0 +1,12 @@
+/shelf/
+/workspace.xml
+
+.gradle/
+build/
+.idea/
+
+out/
+*.iml
+*.ipr
+*.iws
+/.idea
