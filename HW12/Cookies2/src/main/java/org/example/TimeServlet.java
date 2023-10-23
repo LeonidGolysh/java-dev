@@ -62,9 +62,9 @@ public class TimeServlet extends HttpServlet {
                 sdf.setTimeZone(timeZone);
                 currentTime = sdf.format(new Date());
             } else {
-                TimeZone utcTimeZone = TimeZone.getTimeZone("GMT");
+                TimeZone gmtTimeZone = TimeZone.getTimeZone("GMT");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z");
-                sdf.setTimeZone(utcTimeZone);
+                sdf.setTimeZone(gmtTimeZone);
                 currentTime = sdf.format(new Date());
             }
         }
