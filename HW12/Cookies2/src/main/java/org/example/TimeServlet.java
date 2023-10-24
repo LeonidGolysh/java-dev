@@ -26,8 +26,7 @@ public class TimeServlet extends HttpServlet {
 
         FileTemplateResolver templateResolver = new FileTemplateResolver();
 
-//        templateResolver.setPrefix("C:\\Users\\Leonid\\OneDrive\\Рабочий стол\\New folder (2)\\GoIt\\java_dev\\HW12\\Cookies\\templates/");
-        templateResolver.setPrefix("/templates/");
+        templateResolver.setPrefix("C:\\Users\\Leonid\\OneDrive\\Рабочий стол\\New folder (2)\\GoIt\\java_dev\\HW12\\Cookies2\\templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
         templateResolver.setOrder(templateEngine.getTemplateResolvers().size());
