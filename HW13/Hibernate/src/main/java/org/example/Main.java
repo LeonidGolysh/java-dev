@@ -12,7 +12,7 @@ import java.io.ObjectInputFilter;
 public class Main {
     public static void main(String[] args) {
 //        Flyway flyway = Flyway.configure().load();
-        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:mem:testdb", "sa", "password").load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:./mydb", null, null).load();
         flyway.migrate();
 
 //        Session session = HibernateUtil.getSessionFactory().openSession();
