@@ -12,8 +12,8 @@ import java.io.ObjectInputFilter;
 public class Main {
     public static void main(String[] args) {
 //        Flyway flyway = Flyway.configure().load();
-        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:./mydb", null, null).load();
-        flyway.migrate();
+//        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:mem:testdb", "sa", "password").load();
+//        flyway.migrate();
 
 //        Session session = HibernateUtil.getSessionFactory().openSession();
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
