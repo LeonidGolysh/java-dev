@@ -13,7 +13,7 @@ import java.io.ObjectInputFilter;
 public class Main {
     public static void main(String[] args) {
 //        Flyway flyway = Flyway.configure().load();
-        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:~/hwdb", "sa", "password").load();
+        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:./test", "sa", "password").load();
         flyway.migrate();
 
 //        Session session = HibernateUtil.getSessionFactory().openSession();
@@ -26,9 +26,9 @@ public class Main {
             transaction = session.beginTransaction();
 //            ClientCrudService clientCrudService = new ClientCrudService((SessionFactory) session);
             ClientCrudService clientCrudService = new ClientCrudService(sessionFactory);
-            Client newClient = new Client();
-            newClient.setName("Big Bob");
-            clientCrudService.saveClient(newClient);
+//            Client newClient = new Client();
+//            newClient.setName("Big Bob");
+//            clientCrudService.saveClient(newClient);
 
             Client client = clientCrudService.getClientById(1L);
             System.out.println("Found client: " + client.getName());

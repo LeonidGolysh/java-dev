@@ -79,6 +79,11 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(Planet.class);
 
             sessionFactory = configuration.buildSessionFactory();
+//            sessionFactory = new Configuration()
+//                    .addAnnotatedClass(Client.class)
+//                    .addAnnotatedClass(Planet.class)
+//                    .configure()
+//                    .buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
