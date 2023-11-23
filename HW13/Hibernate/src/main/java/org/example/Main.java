@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.jpa.internal.HintsCollector;
 
 import java.io.ObjectInputFilter;
 
@@ -16,7 +17,8 @@ public class Main {
 //        flyway.migrate();
 
 //        Session session = HibernateUtil.getSessionFactory().openSession();
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = null;
 
