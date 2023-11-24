@@ -62,23 +62,6 @@ public class ClientCrudService {
         }
     }
 
-//    public void deleteClient(Long id) {
-//        Transaction transaction = null;
-//        try (Session session = sessionFactory.openSession()) {
-//            transaction = session.beginTransaction();
-//            Client client = session.get(Client.class, id);
-//
-//            if (client != null) {
-//                session.delete(client);
-//            }
-//            transaction.commit();
-//        } catch (Exception e) {
-//            if (transaction != null) {
-//                transaction.rollback();
-//            }
-//            e.printStackTrace();
-//        }
-//    }
     public void deleteClient(Client client) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();

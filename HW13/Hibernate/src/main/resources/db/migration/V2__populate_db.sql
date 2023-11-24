@@ -1,3 +1,10 @@
+--Planet
+INSERT INTO Planet (id, name) VALUES
+    ('MARS', 'Mars'),
+    ('VEN', 'Venus'),
+    ('EAR', 'Earth'),
+    ('JUP', 'Jupiter');
+
 --Client
 INSERT INTO Client (name) VALUES
     ('John Doe'),
@@ -10,13 +17,6 @@ INSERT INTO Client (name) VALUES
     ('Mark Zuckerberg'),
     ('Elon Mask'),
     ('Bib Bob');
-
---Planet
-INSERT INTO Planet (id, name) VALUES
-    ('MARS', 'Mars'),
-    ('VEN', 'Venus'),
-    ('EAR', 'Earth'),
-    ('JUP', 'Jupiter');
 
 --Ticket
 INSERT INTO Ticket (created_at, client_id, from_planet_id, to_planet_id) VALUES
