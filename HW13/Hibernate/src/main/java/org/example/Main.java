@@ -5,14 +5,9 @@ import org.flywaydb.core.Flyway;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.jpa.internal.HintsCollector;
-
-import java.io.ObjectInputFilter;
 
 public class Main {
     public static void main(String[] args) {
-//        Flyway flyway = Flyway.configure().load();
         Flyway flyway = Flyway.configure().dataSource("jdbc:h2:./test", "sa", "password").load();
         flyway.migrate();
 
@@ -22,13 +17,14 @@ public class Main {
 
         try {
             transaction = session.beginTransaction();
-//            ClientCrudService clientCrudService = new ClientCrudService((SessionFactory) session);
+
             ClientCrudService clientCrudService = new ClientCrudService(sessionFactory);
             Client newClient = new Client();
+
             newClient.setName("Big Bob");
             clientCrudService.saveClient(newClient);
 
-            Client client = clientCrudService.getClientById(1L);
+            Client client = clientCrudService.getClientById(newClient.getId());
             System.out.println("Found client: " + client.getName());
 
             client.setName("Big Bob");
