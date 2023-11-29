@@ -1,6 +1,6 @@
 package org.example.crud;
 
-import org.example.Planet;
+import org.example.model.Planet;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;

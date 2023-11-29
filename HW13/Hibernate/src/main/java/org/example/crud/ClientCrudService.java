@@ -1,6 +1,6 @@
 package org.example.crud;
 
-import org.example.Client;
+import org.example.model.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
