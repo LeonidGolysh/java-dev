@@ -1,6 +1,9 @@
-package org.example;
+package org.example.model;
 
 import jakarta.persistence.*;
+import org.example.model.Client;
+import org.example.model.Planet;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,7 +22,7 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "from_planet_id")
-    private Planet planet;
+    private Planet fromPlanet;
 
     @ManyToOne
     @JoinColumn(name = " to_planet_id")
@@ -29,11 +32,11 @@ public class Ticket {
 
     }
 
-    public Ticket(Long id, LocalDateTime createdAt, Client client, Planet planet, Planet toPlanet) {
+    public Ticket(Long id, LocalDateTime createdAt, Client client, Planet fromPlanet, Planet toPlanet) {
         this.id = id;
         this.createdAt = createdAt;
         this.client = client;
-        this.planet = planet;
+        this.fromPlanet = fromPlanet;
         this.toPlanet = toPlanet;
     }
 
@@ -61,12 +64,12 @@ public class Ticket {
         this.client = client;
     }
 
-    public Planet getPlanet() {
-        return planet;
+    public Planet getFromPlanet() {
+        return fromPlanet;
     }
 
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
+    public void setFromPlanet(Planet fromPlanet) {
+        this.fromPlanet = fromPlanet;
     }
 
     public Planet getToPlanet() {
