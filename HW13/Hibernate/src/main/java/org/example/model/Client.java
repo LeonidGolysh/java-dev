@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Client")
 @Getter
@@ -16,6 +18,9 @@ public class Client {
     @Column(length = 200, nullable = false)
     private String name;
 
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Ticket> tickets;
+
     public Client() {
 
     }
@@ -27,6 +32,13 @@ public class Client {
     public Client(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     public String getName() {
