@@ -1,14 +1,21 @@
 package com.goit.dev13.service;
 
 import com.goit.dev13.entities.Note;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class NoteService {
     private final Map<Long, Note> noteMap = new HashMap<>();
+
+    public List<Note> listAll() {
+        return new ArrayList<>(noteMap.values());
+    }
 
     public Note add(Note note) {
         note.setId(generateUniqueId());
@@ -29,9 +36,7 @@ public class NoteService {
             throw new RuntimeException("Note not found with id: " + id);
         }
 
-        Note existingNote = noteMap.get(id);
-        existingNote.setTitle(note.getTitle());
-        existingNote.setContent(note.getContent());
+        noteMap.put(id, note);
     }
 
     public Note getById(long id) {
@@ -43,5 +48,11 @@ public class NoteService {
 
     private long generateUniqueId() {
         return System.currentTimeMillis();
+    }
+
+    @PostConstruct
+    private void filler() {
+        add(new Note(1L, "World", "Hello world"));
+        add(new Note(2L, "Hello", "World hello"));
     }
 }

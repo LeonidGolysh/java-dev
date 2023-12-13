@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note List</title>
+</head>
+<body>
+  <h1>Note List</h1>
+  <ul th:each="note : ${note}">
+    <li>
+      <span th:text="${note.id} + ."></span>
+      <span th:text="${note.title}"></span><br />
+      <span th:text="${note.content}"></span><br />
+      <a th:href="@{'/note/edit?id=' + ${note.id}}">Edit</a>
+
+        <input type="hidden" name="id" th:value="${note.id}" />
+
+      <form th:action="@{'/note/delete?id=' + ${note.id}}" method="POST">
+
+      <button type="submit">Delete</button>
+      </form>
+    </li>
+  </ul>
+</body>
+</html>

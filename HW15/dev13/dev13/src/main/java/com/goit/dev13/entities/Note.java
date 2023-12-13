@@ -1,6 +1,6 @@
 package com.goit.dev13.entities;
 
-import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Note {
     private Long id;
@@ -11,8 +11,9 @@ public class Note {
 
     }
 
-    public Note(String title, String content) {
-        this.id = new Random().nextLong();
+    @Autowired
+    public Note(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }

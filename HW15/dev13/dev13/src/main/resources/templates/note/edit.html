@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Note</title>
+</head>
+<body>
+  <h1>Edite Note</h1>
+  <form th:action="@{/note/edit}" method="post" th:object="${note}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Title: <input type="text" th:field="*{title}" /></label><br />
+    <label>Content: <textarea th:field="*{content}"></textarea></label><br />
+    <button type="sumbit">Save</button>
+  </form>
+  <a th:href="@{/note/list}">Back to Note List</a>
+</body>
+</html>
