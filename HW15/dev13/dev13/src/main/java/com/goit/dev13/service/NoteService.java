@@ -1,58 +1,51 @@
 package com.goit.dev13.service;
 
 import com.goit.dev13.entities.Note;
-import jakarta.annotation.PostConstruct;
+import com.goit.dev13.repository.NoteRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class NoteService {
-    private final Map<Long, Note> noteMap = new HashMap<>();
+
+    private final NoteRepository noteRepository;
 
     public List<Note> listAll() {
-        return new ArrayList<>(noteMap.values());
+        return noteRepository.findAll();
     }
 
     public Note add(Note note) {
-        note.setId(generateUniqueId());
-        noteMap.put(note.getId(), note);
-        return note;
+        note.setId(null);
+        return noteRepository.save(note);
     }
 
     public void deleteById(long id) {
-        if (!noteMap.containsKey(id)) {
+        if (!noteRepository.existsById(id)) {
             throw new RuntimeException("Note not found with id: " + id);
         }
-        noteMap.remove(id);
+        noteRepository.deleteById(id);
     }
 
     public void update(Note note) {
         long id = note.getId();
-        if (!noteMap.containsKey(id)) {
+        if (!noteRepository.existsById(id)) {
             throw new RuntimeException("Note not found with id: " + id);
         }
 
-        noteMap.put(id, note);
+        noteRepository.save(note);
     }
 
     public Note getById(long id) {
-        if (!noteMap.containsKey(id)) {
-            throw new RuntimeException("Note not found with id: " + id);
-        }
-        return noteMap.get(id);
+        Optional<Note> optionalNote = noteRepository.findById(id);
+        return optionalNote.orElseThrow(() -> new RuntimeException("Note not found with id: " + id));
     }
 
     private long generateUniqueId() {
         return System.currentTimeMillis();
     }
 
-    @PostConstruct
-    private void filler() {
-        add(new Note(1L, "World", "Hello world"));
-        add(new Note(2L, "Hello", "World hello"));
-    }
 }
