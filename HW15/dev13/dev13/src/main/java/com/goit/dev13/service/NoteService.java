@@ -35,7 +35,6 @@ public class NoteService {
         if (!noteRepository.existsById(id)) {
             throw new RuntimeException("Note not found with id: " + id);
         }
-
         noteRepository.save(note);
     }
 
@@ -43,9 +42,4 @@ public class NoteService {
         Optional<Note> optionalNote = noteRepository.findById(id);
         return optionalNote.orElseThrow(() -> new RuntimeException("Note not found with id: " + id));
     }
-
-    private long generateUniqueId() {
-        return System.currentTimeMillis();
-    }
-
 }

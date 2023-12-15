@@ -39,8 +39,6 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 
 	implementation 'org.flywaydb:flyway-core'
-	implementation 'javax.persistence:javax.persistence-api:2.2'
-
 }
 
 tasks.named('test') {

@@ -18,6 +18,11 @@ public class NoteController {
         this.noteService = noteService;
     }
 
+    @PostMapping("/add")
+    public Note addNote(@RequestBody Note note) {
+        return noteService.add(note);
+    }
+
     @GetMapping("/list")
     public String listNote(Model model) {
         model.addAttribute("note", noteService.listAll());
